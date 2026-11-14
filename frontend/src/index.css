@@ -1,0 +1,51 @@
+:root { --bg: #f5f6f8; --card: #fff; --text: #1b2430; --muted: #64707d; --line: #e2e6ea; --accent: #1d4ed8; }
+@media (prefers-color-scheme: dark) {
+  :root { --bg: #14181d; --card: #1e242b; --text: #e8ecf0; --muted: #9aa6b2; --line: #2d353e; --accent: #6d97ff; }
+}
+* { box-sizing: border-box; }
+html, body, #root { height: 100%; margin: 0; }
+body { font: 14px/1.4 system-ui, sans-serif; background: var(--bg); color: var(--text); }
+.layout { display: grid; grid-template-columns: 420px 1fr; height: 100%; }
+.sidebar { overflow-y: auto; padding: 14px; display: flex; flex-direction: column; gap: 10px; }
+.sidebar h1 { font-size: 18px; margin: 0 0 2px; }
+.card { background: var(--card); border: 1px solid var(--line); border-radius: 10px; padding: 12px; text-align: left; color: inherit; font: inherit; }
+.form { display: flex; flex-direction: column; gap: 10px; }
+.form label { display: flex; flex-direction: column; gap: 3px; font-size: 12px; color: var(--muted); flex: 1; }
+.row { display: flex; gap: 10px; }
+input, select { padding: 8px; border: 1px solid var(--line); border-radius: 6px; background: var(--bg); color: var(--text); font: inherit; }
+button { cursor: pointer; }
+.form button { padding: 10px; border: 0; border-radius: 6px; background: var(--accent); color: #fff; font-weight: 600; }
+.form button:disabled { opacity: 0.6; cursor: progress; }
+.error { border-color: #d62828; color: #d62828; }
+.recommendation p { margin: 4px 0 0; }
+.route { border-left: 5px solid; width: 100%; display: block; }
+.route.selected { outline: 2px solid var(--accent); }
+.route-head { display: flex; gap: 8px; align-items: center; }
+.rank { margin-left: auto; color: var(--muted); }
+.badge { background: #2e9e50; color: #fff; border-radius: 99px; padding: 1px 8px; font-size: 11px; }
+.badge.danger { background: #6a1b9a; }
+.stats { display: flex; gap: 12px; margin: 6px 0; flex-wrap: wrap; }
+.stats.small { color: var(--muted); font-size: 12px; margin-bottom: 0; }
+.riskbar { display: flex; height: 8px; border-radius: 4px; overflow: hidden; background: var(--line); }
+.table-wrap { max-height: 260px; overflow: auto; margin-top: 6px; }
+table { width: 100%; border-collapse: collapse; font-size: 12px; }
+th, td { text-align: left; padding: 4px 6px; border-bottom: 1px solid var(--line); white-space: nowrap; }
+th { position: sticky; top: 0; background: var(--card); }
+.dot { display: inline-block; width: 8px; height: 8px; border-radius: 50%; margin-right: 5px; }
+.mapwrap { position: relative; }
+.map { height: 100%; width: 100%; }
+.slider-bar { position: absolute; z-index: 1000; left: 12px; right: 12px; bottom: 18px; background: var(--card); border: 1px solid var(--line); border-radius: 10px; padding: 10px 14px; }
+.slider-top { display: flex; gap: 14px; align-items: center; justify-content: space-between; flex-wrap: wrap; margin-bottom: 4px; }
+.slider-bar input[type=range] { width: 100%; padding: 0; }
+.legend { display: flex; gap: 10px; font-size: 11px; color: var(--muted); flex-wrap: wrap; }
+.legend i { display: inline-block; width: 10px; height: 10px; border-radius: 2px; margin-right: 4px; }
+.overlay { position: absolute; z-index: 1000; top: 12px; left: 50%; transform: translateX(-50%); background: var(--card); border: 1px solid var(--line); padding: 8px 16px; border-radius: 99px; }
+@media (max-width: 800px) {
+  .layout { grid-template-columns: 1fr; grid-template-rows: 55vh 45vh; }
+  .mapwrap { order: -1; }
+}
+.pin { background: #111; color: #fff; border: 2px solid #fff; border-radius: 50%; font-weight: 700; text-align: center; line-height: 22px; }
+.place { position: relative; }
+.suggestions { position: absolute; z-index: 2000; top: 100%; left: 0; right: 0; margin: 2px 0 0; padding: 4px 0; list-style: none; background: var(--card); border: 1px solid var(--line); border-radius: 8px; box-shadow: 0 6px 20px rgba(0, 0, 0, 0.18); max-height: 240px; overflow-y: auto; }
+.suggestions li { padding: 7px 10px; font-size: 13px; color: var(--text); cursor: pointer; }
+.suggestions li:hover, .suggestions li.active { background: var(--bg); }
