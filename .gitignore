@@ -218,3 +218,8 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# project
+frontend/dist/
+frontend/node_modules/
+db.sqlite3
