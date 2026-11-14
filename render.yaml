@@ -1,0 +1,16 @@
+# Render.com blueprint: one web service serving Django API + built React app.
+services:
+  - type: web
+    name: weather-aware-truck-routing
+    runtime: python
+    buildCommand: pip install -r requirements.txt && cd frontend && npm ci && npm run build
+    startCommand: gunicorn config.wsgi --workers 2 --threads 4 --timeout 120
+    envVars:
+      - key: DEBUG
+        value: "0"
+      - key: SECRET_KEY
+        generateValue: true
+      - key: PYTHON_VERSION
+        value: 3.11.8
+      - key: NODE_VERSION
+        value: 20
